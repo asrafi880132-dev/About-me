@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD ABU SAYED RAFI | The Experience</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        /* Smoother scrolling physics */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+        :root {
+            --bg: #050505;
+            --text-main: #e0e0e0;
+            --text-muted: #666;
+            --accent: #eb5939; /* International Orange - Sporty & Urgent */
+            --line: rgba(255, 255, 255, 0.08);
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --cursor-size: 20px;
+        }
+        .reveal {
+            background: none;
+            opacity: 0;
+            /* Use a smaller translateY (30-60px) for a more sophisticated look */
+            transform: translateY(40px) scale(0.9); 
+            filter: blur(10px);
+            will-change: transform, opacity, filter; /* Triggers hardware acceleration */
+            transition: 
+                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            background: none;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+        html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg);
+}
+        /* Update your CSS for skill cards */
+        .reveal div[style*="background: rgba(255,255,255,0.03)"] {
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .reveal div[style*="background: rgba(255,255,255,0.03)"]:hover {
+            background: rgba(255, 255, 255, 0.07) !important;
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Hide default cursor */ }
+        
+        html { scroll-behavior: smooth; }
+ 
+
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* --- 2. TEXTURE OVERLAY (The $80k Polish) --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            animation: imageReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Navigation arrows */
+        .img-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer !important;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .img-nav:hover {
+            color: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .img-nav.prev { left: 20px; }
+        .img-nav.next { right: 20px; }
+
+        /* Caption */
+        .img-caption {
+            position: absolute;
+            bottom: -45px;
+            width: 100%;
+            text-align: center;
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* Image reveal animation */
+        @keyframes imageReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+                filter: blur(6px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+        /* --- 3. CUSTOM CURSOR --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+        }
+        .cursor-dot { width: 5px; height: 5px; background-color: var(--accent); }
+        .cursor-outline { 
+            width: var(--cursor-size); height: var(--cursor-size); 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        
+        /* Hover State for Cursor */
+        body.hovering .cursor-outline {
+            width: 50px; height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: transparent;
+            backdrop-filter: blur(2px);
+        }
+        /* --- 4. PRELOADER --- */
+        .preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 99999;
+            display: flex; justify-content: center; align-items: center;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+        .loader-text { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+
+        /* --- 5. NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 30px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+        .logo { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; text-transform: uppercase; }
+        .menu-btn { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 6. HERO SECTION (Editorial Style) --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            overflow: hidden;
+        }
+        section {
+            transition: background-color 1.2s ease;
+        }
+
+        section .active {
+            background-color: rgba(255,255,255,0.015);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Text takes more space, Image takes less */
+            gap: 40px;
+            width: 100%;
+            max-width: 1400px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 8vw; /* Responsive huge text */
+            line-height: 0.85;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(100px);
+            animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+        }
+
+        .hero-text h1 span.outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+        }
+        .magnetic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    
+    color: white;
+    cursor: pointer;
+    position: relative;
+    /* Use 'transform' instead of 'all' for performance */
+    transition: box-shadow 0.4s ease, background 0.4s ease;
+    will-change: transform;
+}
+
+/* The invisible "Magnetic Field" - makes the hover area larger than the button */
+.magnetic::before {
+    content: '';
+    position: absolute;
+    top: -50px; left: -50px; right: -50px; bottom: -50px;
+    z-index: -1;
+}
+
+
+
+.btn-text {
+   
+    pointer-events: none; /* Let the mouse go through the text to the parent */
+    will-change: transform;
+}
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+
+        /* THE PICTURE FRAME (The "Place for Pic") */
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            border-radius: 4px; /* Slight rounding */
+            opacity: 0;
+            transform: scale(0.9);
+            animation: revealScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+        }
+
+     
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            /* Visual clarity */
+            filter: grayscale(100%) contrast(1.15);
+            image-rendering: -webkit-optimize-contrast;
+
+            /* GPU acceleration */
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            will-change: transform;
+
+            transition: transform 1.4s ease, filter 0.4s ease;
+        }
+
+        
+        .hero-image-wrapper:hover .hero-image {
+            transform: scale(1.05);
+            filter: grayscale(0%); /* Color on hover */
+        }
+
+        /* --- 7. MARQUEE STRIP (Rolling Text) --- */
+        .marquee-container {
+            padding: 40px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            overflow: hidden;
+            background: var(--bg);
+            position: relative;
+            z-index: 10;
+        }
+        .marquee {
+            white-space: nowrap;
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+        body.video-open * {
+            cursor: auto !important;
+        }
+
+        /* Hide custom cursor elements when video is open */
+        body.video-open .cursor-dot,
+        body.video-open .cursor-outline {
+            display: none !important;
+        }
+        .marquee span {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .marquee-container:hover .marquee span {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        .marquee-container:hover .marquee {
+            animation-duration: 12s;
+        }
+        .marquee span {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding-right: 50px;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+        }
+
+        /* --- 8. SECTION STYLING --- */
+        section { padding: 120px 50px; border-bottom: 1px solid var(--line); }
+        .section-header {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+        section:nth-child(even) {
+            background: transparent;
+        }
+        
+        /* About / Narrative */
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+        }
+        section:nth-child(even) {
+    background: transparent !important;
+}
+        .narrative-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            line-height: 1.6;
+            background: none;
+            letter-spacing: 0.01em;
+            color: var(--text-main);
+        }
+
+        .highlight { color: var(--accent); }
+
+        /* Timeline / Education */
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--line);
+            transition: 0.3s;
+        }
+        .timeline-item:hover { background: rgba(255,255,255,0.02); padding-left: 20px; }
+        .year { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-muted); }
+        .role h3 { font-size: 2rem; margin-bottom: 5px; }
+        .role p { color: var(--text-muted); }
+
+        /* Video Modal */
+        .video-trigger {
+            margin-top: 50px;
+            display: inline-block;
+            padding: 20px 40px;
+            border: 1px solid var(--line);
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-trigger::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--accent); z-index: -1; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .video-trigger:hover::after { width: 100%; }
+        .video-trigger:hover { color: #000; border-color: var(--accent); }
+
+        /* --- 9. ANIMATION KEYFRAMES --- */
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes revealScale { to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-image-wrapper { height: 40vh; order: -1; margin-bottom: 20px; }
+            .hero-text h1 { font-size: 12vw; }
+            .narrative-grid { grid-template-columns: 1fr; }
+            nav { padding: 20px; }
+            section { padding: 60px 20px; }
+            .cursor-dot, .cursor-outline { display: none; } /* Disable custom cursor on mobile */
+            * { cursor: auto; }
+            .cv-container { height: 70vh; }
+        }
+        /*cv*/
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 99999;
+            align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .timeline-item:hover {
+            background: rgba(254, 150, 4, 0.03);
+            box-shadow: inset 4px 0 0 var(--accent);
+        }
+        .modal-close {
+            position: absolute; top: 30px; right: 40px;
+            background: none; border: none; color: white;
+            font-size: 2.5rem; font-family: var(--font-display);
+            cursor: pointer !important; z-index: 100000;
+            transition: transform 0.3s;
+        }
+        .modal-close:hover { transform: rotate(90deg); color: var(--accent); }
+        .cv-container { width: 90%; max-width: 1000px; height: 85vh; background: #1a1a1a; position: relative; }
+        .cv-frame {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #111;
+        }
+        iframe.cv-frame { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <div class="cursor-dot" data-cursor></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <div class="preloader" id="preloader">
+        <div class="loader-text">Welcome</div>
+    </div>
+
+    
+
+    <div class="hero">
+        <div class="hero-grid">
+            <div class="hero-text reveal">
+                <h1>MD ABU<br>SAYED <span class="outline">RAFI</span></h1>
+                
+                
+                <div style="margin-top: 40px; display: flex; gap: 20px;">
+                    <a href="#contact" class="video-trigger magnetic" data-strength="50">Contact Me</a>
+                    <a href="javascript:void(0)" onclick="openCV()" class="video-trigger magnetic" data-strength="50" style="border-color: transparent;">
+                         CV
+                    </a>
+                    <a href="javascript:void(0)" onclick="openVideo()" class="video-trigger magnetic" data-strength="50" style="border-color: transparent;">
+                         Intro
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="hero-image-wrapper magnetic reveal" >
+                <img src="https://github.com/asrafi880132-dev/About-me/blob/main/336c38fa-eb92-4a7c-af23-2adb9d2aaba2.jpeg?raw=true" alt="Md Abu Sayed Rafi" class="hero-image">
+            </div>
+        </div>
+    </div>
+
+    <div class="marquee-container reveal">
+        <div class="marquee ">
+            <span>Analytical Thinking</span>
+            <span>Problem Solving</span>
+            <span>Team Leadership</span>
+            <span>Sports Discipline</span>
+            <span>Analytical Thinking</span> <span>Problem Solving</span>
+            <span>Team Leadership</span>
+        </div>
+    </div>
+
+    <section id="about reveal">
+        <div class="narrative-grid reveal">
+            <div class="section-header reveal">PROFILE</div>
+            <div>
+                <p class="narrative-text reveal">
+                    My name is Md Abu Sayed Rafi, and I am from Dhaka, Bangladesh. I completed both my SSC and HSC in Science. Currently, I am pursuing a Bachelor of Business Administration (BBA) at American International University–Bangladesh (AIUB). Although my academic background is in science, my curiosity and interest in business have guided me toward this field. I am a motivated and dedicated student with a clear goal of becoming an entrepreneur in the future, where I hope to apply my knowledge, creativity, and leadership skills to create innovative business solutions.
+                </p>
+                
+                <div style="margin-top: 50px; display: flex; gap: 50px;">
+                    <div>
+                        <h4 style="color:var(--text-muted); font-size: 0.9rem;">LOCATION</h4>
+                        <p style="font-size: 1.2rem;">Dhaka, Bangladesh</p>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--text-muted); font-size: 0.9rem;">LANGUAGE</h4>
+                        <p style="font-size: 1.2rem;">Bangla and English</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-header reveal">EDUCATION</div>
+        
+        <div class="timeline-item magnetic reveal" data-strength="10">
+            <div class="year">2020</div>
+            <div class="role">
+                <h3>SSC (Science)</h3>
+                <p>Jurain Ashraf Master Adarsha High School • GPA 5.00</p>
+            </div>
+        </div>
+
+        <div class="timeline-item magnetic reveal" data-strength="10">
+            <div class="year">2023</div>
+            <div class="role">
+                <h3>HSC (Science)</h3>
+                <p>Hazi Misir Ali College • GPA 4.00</p>
+            </div>
+        </div>
+        <div class="timeline-item magnetic reveal" data-strength="10">
+            <div class="year">2025</div>
+            <div class="role">
+                <h3>IELTS</h3>
+                <p>6.0</p>
+            </div>
+        </div>
+
+        <div class="timeline-item magnetic reveal" data-strength="10">
+            <div class="year">CURRENT</div>
+            <div class="role">
+                <h3>Bachelor of Business Admin</h3>
+                <p>American International University Bangladesh</p>
+            </div>
+        </div>
+    </section>
+
+    <section  class="reveal" id="skills">
+        <div class="narrative-grid reveal">
+            <div class="section-header reveal">SKILLS</div>
+            <div>
+                <p class="narrative-text reveal" style="font-size: 1.1rem; margin-bottom: 20px;">SKILLS</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;">
+                    <span  class="reveal" style="padding: 10px 20px; border: 1px solid var(--line); border-radius: 50px;">Microsoft Office</span>
+                    <span  class="reveal" style="padding: 10px 20px; border: 1px solid var(--line); border-radius: 50px;">Digital Marketing</span>
+                    <span  class="reveal" style="padding: 10px 20px; border: 1px solid var(--line); border-radius: 50px;">Team Leadership</span>
+                </div>
+
+                <p class="narrative-text reveal" style="font-size: 1.1rem; margin-bottom: 20px;">CO-CURRICULAR</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div  class="reveal " style="padding: 20px; background: rgba(255,255,255,0.03);">
+                        <i class="fa-solid fa-futbol" style="color: var(--accent); font-size: 2rem; margin-bottom: 15px;"></i>
+                        <h4>Sports</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Football, Cricket & Badminton Tournaments</p>
+                    </div>
+                    <div class="reveal" style="padding: 20px; background: rgba(255,255,255,0.03);">
+                        <i class="fa-solid fa-water" style="color: var(--accent); font-size: 2rem; margin-bottom: 15px;"></i>
+                        <h4>Swimming</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Regular swimmer & local club member</p>
+                    </div>
+                    <div  class="reveal" style="padding: 20px; background: rgba(255,255,255,0.03);" onclick="openImageModal(0)">
+                        <i class="fa-solid fa-image" style="color: var(--accent); font-size: 2rem; margin-bottom: 15px;"></i>
+                        <h4>Photography</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">See Photos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="border-bottom: none; padding-bottom: 50px;">
+        <div class="section-header reveal">CONTACT</div>
+        <a href="mailto:rafi496712@gmail.com" class="magnetic reveal" data-strength="30" style="display: block; font-family: var(--font-display); font-size: 5vw; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--text-muted); padding-bottom: 20px; margin-bottom: 40px;">
+            rafi496712@gmail.com
+        </a>
+        
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: var(--text-muted);">
+            <p>+880 1811-270505</p>
+            <p>1211/1/Cha5/1, East Jurain, Dhaka-1204</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="https://www.facebook.com/share/17DSWJDXdk/"><i class="fa-brands fa-facebook" style="color: #1877F2;"></i></a>
+                <a href="https://www.instagram.com/ayan_al_rafi?igsh=MTR3anowNWg1c2pmZQ=="><i class="fa-brands fa-instagram instagram-gradient" style="color: #ca5067;"></i>
+                <a href="https://wa.me/01811270505"><i class="fa-brands fa-whatsapp" style="color: #00ff48;"></i></a>
+                 <a href="https://t.me/Rafi52672"><i class="fa-brands fa-telegram" style="color: #4cadfc;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <div id="vidModal" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; align-items:center; justify-content:center;">
+        <button onclick="closeVideo()" class="modal-close" >&times;</button>
+        <div style="width: 80%; max-width: 900px; aspect-ratio: 16/9; background: #000;">
+            <iframe id="youtubeFrame" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div id="cvModal" class="modal-overlay">
+        <button onclick="closeCV()" class="modal-close">&times;</button>
+        <div class="cv-container">
+            <img id="cvImage" class="cv-frame" src="" alt="CV Image">
+            
+        </div>
+    </div>
+    <div id="imgModal" class="modal-overlay">
+        <button onclick="closeImageModal()" class="modal-close">&times;</button>
+
+        <div class="cv-container image-container">
+            <img id="modalImage" src="" alt="Gallery Image" />
+
+            <!-- Navigation -->
+            <button class="img-nav prev" onclick="prevImage()">&#10094;</button>
+            <button class="img-nav next" onclick="nextImage()">&#10095;</button>
+
+            <!-- Caption -->
+            <div class="img-caption">
+                <span id="imgIndex"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        const images = [
+            "https://github.com/asrafi880132-dev/About-Me/blob/main/083fbf97-7807-46b4-b929-65a97642c76b.jpeg?raw=true",
+            "https://github.com/asrafi880132-dev/About-Me/blob/main/2d7a5fcb-b998-4505-870f-9b67d5278ad2.jpeg?raw=true",
+            "https://github.com/asrafi880132-dev/About-Me/blob/main/4840ff2f-5ed5-4092-8fa0-055cfc6f5b1e.jpeg?raw=true",
+            "https://github.com/asrafi880132-dev/About-Me/blob/main/49b5c205-cf8e-43cb-b4d8-c7e80437ec00.jpeg?raw=true"
+        ];
+
+        let currentImgIndex = 0;
+        const cvImageUrl = "https://github.com/asrafi880132-dev/About-Me/blob/main/download.png?raw=true"; 
+        const cvDownloadUrl = "https://github.com/asrafi880132-dev/About-Me/blob/main/download.png?raw=true";
+        const reveals = document.querySelectorAll('.reveal');
+
+        const perfectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                
+                const isVisible = entry.isIntersecting;
+                
+                
+                requestAnimationFrame(() => {
+                    entry.target.classList.toggle('active', isVisible);
+                });
+            });
+        }, {
+           
+            rootMargin: '0px 0px 20% 0px',
+            // 0 means "trigger as soon as a single pixel enters the zone"
+            threshold: [0, 0.01] 
+        });
+
+        // Implementation with a "Ready" check to prevent top-of-page flickering
+        const init = () => {
+            const targets = document.querySelectorAll('.reveal');
+            targets.forEach(el => perfectObserver.observe(el));
+        };
+
+        // Ensure DOM is fully parsed so heights are calculated correctly
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+
+
+        
+        window.addEventListener("load", function() {
+            // Ensure we are at the top before removing overlay
+        
+            const preloader = document.getElementById("preloader");
+            setTimeout(() => {
+                preloader.style.transform = "translateY(-100%)";
+            }, 100); // Small buffer
+            window.scrollTo(0, 0);
+        });
+
+        // 2. CUSTOM CURSOR
+        const cursorDot = document.querySelector("[data-cursor]");
+        const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+        window.addEventListener("mousemove", function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot follows instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline follows with slight delay (animation)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // 3. MAGNETIC BUTTONS
+        const magnets = document.querySelectorAll('.magnetic');
+
+magnets.forEach(magnet => {
+    const content = magnet.querySelector('.btn-text');
+    
+    let state = { x: 0, y: 0, hover: false };
+    let current = { x: 0, y: 0 };
+
+    magnet.addEventListener('mousemove', e => {
+        const rect = magnet.getBoundingClientRect();
+        
+        // Calculate distance from center (-1 to 1 scale)
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // The "Pull" - Adjust these numbers to change the intensity
+        state.x = (e.clientX - centerX) * 0.25; 
+        state.y = (e.clientY - centerY) * 0.25;
+        state.hover = true;
+    });
+
+    magnet.addEventListener('mouseleave', () => {
+        state.x = 0;
+        state.y = 0;
+        state.hover = false;
+    });
+
+    // The Animation Loop (High Performance)
+    function render() {
+        // LERP: current + (target - current) * smoothness
+        // 0.1 is very smooth, 0.2 is snappier
+        current.x += (state.x - current.x) * 0.15;
+        current.y += (state.y - current.y) * 0.15;
+
+        // Apply transform to the outer container
+        magnet.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
+        
+        // Secondary Parallax: The inner text moves MORE than the button
+        if(content) {
+            content.style.transform = `translate3d(${current.x * 0.3}px, ${current.y * 0.3}px, 0)`;
+        }
+
+        requestAnimationFrame(render);
+    }
+    render();
+});
+
+        // 4. VIDEO LOGIC
+        function openVideo() {
+            const modal = document.getElementById('vidModal');
+            // We change the ID from 'youtubeFrame' or 'yt' to match whatever your HTML has
+            const frame = document.querySelector('iframe'); 
+            document.body.classList.add('video-open');
+            frame.src = "https://www.youtube.com/embed/fIH-ZW5jpAc?si=f32tCqKZt1c6kSO7"; 
+            
+            modal.style.display = "flex";
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('vidModal');
+            const frame = document.getElementById('youtubeFrame');
+            
+            frame.src = "";
+            modal.style.display = "none";
+            document.body.classList.remove('video-open'); 
+        }
+
+        
+        function openCV() {
+            const modal = document.getElementById('cvModal');
+            const img = document.getElementById('cvImage');
+
+            document.body.classList.add('modal-open');
+            document.body.classList.add('video-open');
+
+            img.src = cvImageUrl;
+            
+
+            modal.classList.add('open');
+        }
+
+        function closeCV() {
+            const modal = document.getElementById('cvModal');
+            const frame = document.getElementById('cvFrame');
+            modal.classList.remove('open');
+            document.body.classList.remove('modal-open');
+            
+            // Clear src to stop loading
+            setTimeout(() => { frame.src = ""; }, 300);
+            document.body.classList.remove('video-open'); 
+        }
+        function openImageModal(index = 0) {
+            const modal = document.getElementById("imgModal");
+            const img = document.getElementById("modalImage");
+            document.body.classList.add('video-open');
+
+            currentImgIndex = index;
+            img.src = images[currentImgIndex];
+            updateCaption();
+
+            modal.classList.add("open");
+            document.body.classList.add("modal-open");
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById("imgModal");
+            modal.classList.remove("open");
+            document.body.classList.remove("modal-open");
+            document.body.classList.remove('video-open'); 
+        }
+
+        function nextImage() {
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+            changeImage();
+        }
+
+        function prevImage() {
+            currentImgIndex =
+                (currentImgIndex - 1 + images.length) % images.length;
+            changeImage();
+        }
+
+        function changeImage() {
+            const img = document.getElementById("modalImage");
+            img.style.animation = "none";
+            img.offsetHeight; // reflow
+            img.style.animation = "imageReveal 0.9s cubic-bezier(0.16,1,0.3,1)";
+            img.src = images[currentImgIndex];
+            updateCaption();
+        }
+
+        function updateCaption() {
+            document.getElementById("imgIndex").textContent =
+                `${currentImgIndex + 1} / ${images.length}`;
+        }
+        window.scrollTo(0, 0);
+    </script>
+</body>
+</html>
